@@ -1,0 +1,113 @@
+var list = [];
+//selecting which service you need buttons
+onEvent("firefighterButton", "click", function( ) {
+  setScreen("ffscreen");
+});
+onEvent("ParamedicsButton", "click", function( ) {
+  setScreen("mdscreenM");
+});
+onEvent("PoliceButton", "click", function( ) {
+  setScreen("policeScreen");
+});
+//Buttons that go back to the home screen
+onEvent("popoHome", "click", function( ) {
+  setScreen("Home");
+});
+onEvent("HomeButtonF", "click", function( ) {
+  setScreen("Home");
+});
+onEvent("homebuttonM", "click", function( ) {
+  setScreen("Home");
+});
+//add to cart buttons
+onEvent("homeCartButton", "click", function( ) {
+  setScreen("CartScreen");
+  if (list.length == 3) {
+    setText("CartOrderText", ((list[0] + "\n") + list[1] + "\n") + list[2]);
+  } else if ((list.length == 2)) {
+    setText("CartOrderText", (list[0] + "\n") + list[1]);
+  } else if ((list.length == 1)) {
+    setText("CartOrderText", list[0]);
+  } else if (((list.length == 0))) {
+    setText("CartOrderText", "");
+  }
+});
+onEvent("addbuttonM", "click", function( ) {
+  setScreen("Home");
+  appendItem(list, "Paramedics");
+});
+onEvent("AddButtonF", "click", function( ) {
+  setScreen("Home");
+  appendItem(list, "Fire Fighter");
+});
+onEvent("popoAdd", "click", function( ) {
+  setScreen("Home");
+  appendItem(list, "Police");
+});
+//done buttons that go to the Cart screen
+onEvent("donebutton", "click", function( ) {
+  setScreen("CartScreen");
+  if (list.length == 3) {
+    setText("CartOrderText", ((list[0] + "\n") + list[1] + "\n") + list[2]);
+  } else if ((list.length == 2)) {
+    setText("CartOrderText", (list[0] + "\n") + list[1]);
+  } else if ((list.length == 1)) {
+    setText("CartOrderText", list[0]);
+  }
+});
+onEvent("DoneButtonF", "click", function( ) {
+  setScreen("CartScreen");
+  if (list.length == 3) {
+    setText("CartOrderText", ((list[0] + "\n") + list[1] + "\n") + list[2]);
+  } else if ((list.length == 2)) {
+    setText("CartOrderText", (list[0] + "\n") + list[1]);
+  } else {
+    setText("CartOrderText", list[0]);
+  }
+});
+onEvent("popoDone", "click", function( ) {
+  setScreen("CartScreen");
+  if (list.length == 3) {
+    setText("CartOrderText", ((list[0] + "\n") + list[1] + "\n") + list[2]);
+  } else if ((list.length == 2)) {
+    setText("CartOrderText", (list[0] + "\n") + list[1]);
+  } else if ((list.length == 1)) {
+    setText("CartOrderText", list[0]);
+  }
+});
+//Button that completes your order
+onEvent("OrderButton", "click", function( ) {
+  setScreen("otwScreen");
+  setText("locationTextInput", "");
+  setText("NameInput", "");
+  setText("text_input4", "");
+  if ((list.length == 3)) {
+    setText("randomTime", "Your estimated time of arrival is: " + randomNumber(10, 15) + " minutes");
+  } else if ((list.length == 2)) {
+    setText("randomTime", "Your estimated time of arrival is: " + randomNumber(5, 10) + " minutes");
+  } else if ((list.length == 1)) {
+    setText("randomTime", "Your estimated time of arrival is: " + randomNumber(2, 5) + " minutes");
+  } else if ((list.length == 0)) {
+    setText("randomTime", ("Your estimated time of arrival is: " + "0") + " minutes");
+  }
+});
+onEvent("CancelButton", "click", function( ) {
+  setScreen("Home");
+  setText("locationTextInput", "");
+  setText("NameInput", "");
+  setText("text_input4", "");
+  setText("text_input2", "");
+  setText("text_input1", "");
+  setText("polieText", "");
+  list = [];
+});
+onEvent("goHome", "click", function( ) {
+  setScreen("Home");
+  setText("locationTextInput", "");
+  setText("NameInput", "");
+  setText("text_input4", "");
+  setText("text_input2", "");
+  setText("text_input1", "");
+  setText("polieText", "");
+  list = [];
+});
